@@ -1,4 +1,4 @@
-import { compare, hash } from 'bcrypt'
+import { hash } from 'bcrypt'
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeUpdate, BeforeInsert } from "typeorm";
 
 @Entity()
@@ -31,7 +31,6 @@ export class Employee {
   updated_at: Date;
 
   @BeforeInsert()
-  @BeforeUpdate()
   private async encryptPassword() {
     this.password = await hash(this.password, 8)
   }
