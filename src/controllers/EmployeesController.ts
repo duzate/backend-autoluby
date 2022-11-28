@@ -26,7 +26,7 @@ class EmployeeController {
 
   async update(req: Request, res: Response) {
     const { email, avatar, bio, password, old_password } = req.body
-    const { id } = req.params
+    const { id } = req.userId
 
     const employeeService = new UpdateEmployeeService()
 
@@ -36,7 +36,7 @@ class EmployeeController {
   }
 
   async delete(req: Request, res: Response) {
-    const { id } = req.params
+    const { id } = req.userId
 
     const employeeService = new DeleteEmployeeService()
 
