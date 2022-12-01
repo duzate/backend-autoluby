@@ -2,9 +2,9 @@ import { vehicleRepository } from "../../repositories/VehicleRepository"
 
 class CreateVehicleService {
   async execute({ marca, modelo, ano, km, cor, chassi, price }) {
-    const cpfExists = await vehicleRepository.findOneBy({ chassi })
+    const vehicleExists = await vehicleRepository.findOneBy({ chassi })
 
-    if (chassi) {
+    if (vehicleExists) {
       throw new Error('Veículo já está cadastrado')
     }
 

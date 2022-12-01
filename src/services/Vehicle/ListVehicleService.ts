@@ -1,8 +1,21 @@
 import { vehicleRepository } from "../../repositories/VehicleRepository"
 
 class ListVehicleService {
-  async execute() {
-    const employee = await vehicleRepository.find()
+  async execute({ marca, modelo, ano, km, cor, chassi, price, status }) {
+    const employee = await vehicleRepository.find({
+      where: {
+        marca,
+        modelo,
+        ano,
+        km,
+        cor,
+        chassi,
+        price,
+        status
+      }
+    }
+
+    )
 
     return employee
   }

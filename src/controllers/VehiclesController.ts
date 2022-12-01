@@ -7,29 +7,31 @@ class VehiclesController {
   async store(req: Request, res: Response) {
     const { marca, modelo, ano, km, cor, chassi, price } = req.body
 
-    const employeeService = new CreateVehicleService()
+    const vehicleService = new CreateVehicleService()
 
-    const employee = await employeeService.execute({ marca, modelo, ano, km, cor, chassi, price })
+    const vehicle = await vehicleService.execute({ marca, modelo, ano, km, cor, chassi, price })
 
-    return res.json(employee).status(202)
+    return res.json(vehicle).status(202)
   }
 
   async list(req: Request, res: Response) {
-    const employeeService = new ListVehicleService()
+    const { marca, modelo, ano, km, cor, chassi, price, status } = req.query
 
-    const employee = await employeeService.execute()
+    const vehicleService = new ListVehicleService()
 
-    return res.json(employee)
+    const vehicle = await vehicleService.execute({ marca, modelo, ano, km, cor, chassi, price, status })
+
+    return res.json(vehicle)
   }
 
   async delete(req: Request, res: Response) {
-    const { chassi } = req.body
+    const { chassi } = req.params
 
-    const employeeService = new DeleteVehicleService()
+    const vehicleService = new DeleteVehicleService()
 
-    await employeeService.execute({ chassi })
+    await vehicleService.execute({ chassi })
 
-    return res.send('User is deleted')
+    return res.send('Veículo deletado')
   }
 }
 

@@ -7,7 +7,7 @@ export const vehicleRoutes = Router()
 
 const vehicleController = new VehiclesController()
 
-vehicleRoutes.post('/register', validation(createVehicleValidation), vehicleController.store)
-vehicleRoutes.get('/register', vehicleController.store)
-vehicleRoutes.delete('/register', vehicleController.store)
+vehicleRoutes.post('/vehicles', validation(createVehicleValidation), vehicleController.store)
+vehicleRoutes.get('/vehicles', vehicleController.list)
+vehicleRoutes.delete('/vehicles/:chassi', vehicleController.delete)
 

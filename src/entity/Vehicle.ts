@@ -27,11 +27,12 @@ export class Vehicle {
   @Column()
   price: string
 
+  @Column({ default: 'Disponível' })
+  status: string
+
   @CreateDateColumn()
   created_at: Date;
 
   @CreateDateColumn()
   updated_at: Date;
-
-
 }
