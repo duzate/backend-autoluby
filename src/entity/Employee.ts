@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt'
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeUpdate, BeforeInsert } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert } from "typeorm";
 
-@Entity()
+@Entity('employees')
 export class Employee {
   @PrimaryGeneratedColumn('uuid')
   id: string
