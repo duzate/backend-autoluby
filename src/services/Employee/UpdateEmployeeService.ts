@@ -4,6 +4,7 @@ import { employeeRepository } from "../../repositories/EmployeeRepository"
 interface IEmployee {
   id: string,
   email?: string,
+  name: string
   bio?: string,
   avatar?: string,
   password?: string,
@@ -11,7 +12,7 @@ interface IEmployee {
 }
 
 class UpdateEmployeeService {
-  async execute({ id, email, bio, avatar, password, old_password }: IEmployee) {
+  async execute({ id, email, name, bio, avatar, password, old_password }: IEmployee) {
     const employee = await employeeRepository.findOneBy({ id })
 
     if (!employee) {
@@ -41,6 +42,11 @@ class UpdateEmployeeService {
 
     if (email) {
       employee.email = email
+    }
+
+
+    if (name) {
+      employee.name = name
     }
 
     if (bio) {

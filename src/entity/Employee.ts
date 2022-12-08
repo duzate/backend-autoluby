@@ -1,5 +1,6 @@
 import { hash } from 'bcrypt'
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, BeforeInsert, OneToMany } from "typeorm";
+import { Order } from './Order';
 
 @Entity('employees')
 export class Employee {
@@ -35,4 +36,6 @@ export class Employee {
     this.password = await hash(this.password, 8)
   }
 
+  @OneToMany(() => Order, (order) => order.employee)
+  order: Order[]
 }

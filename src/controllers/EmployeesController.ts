@@ -25,12 +25,12 @@ class EmployeeController {
   }
 
   async update(req: Request, res: Response) {
-    const { email, avatar, bio, password, old_password } = req.body
+    const { email, name, avatar, bio, password, old_password } = req.body
     const { id } = req.userId
 
     const employeeService = new UpdateEmployeeService()
 
-    const employee = await employeeService.execute({ id, email, bio, avatar, password, old_password })
+    const employee = await employeeService.execute({ id, email, name, bio, avatar, password, old_password })
 
     return res.json(employee).status(202)
   }

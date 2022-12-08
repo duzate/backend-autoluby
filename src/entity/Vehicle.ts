@@ -1,5 +1,6 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToOne } from "typeorm";
+import { Order } from "./Order";
 
 @Entity('vehicles')
 export class Vehicle {
@@ -35,4 +36,7 @@ export class Vehicle {
 
   @CreateDateColumn()
   updated_at: Date;
+
+  @OneToOne(() => Order, (order) => order.vehicle)
+  order: Order
 }

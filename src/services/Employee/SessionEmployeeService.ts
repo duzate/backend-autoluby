@@ -21,9 +21,15 @@ class SessionEmployeeService {
 
     const { id, name, cpf, avatar, bio } = user
     return ({
-      data: {
-        id, email, name, cpf, avatar, bio
-      }, token
+      user: {
+        id,
+        email,
+        name,
+        cpf,
+        avatar,
+        bio
+      },
+      token
     });
 
   }
